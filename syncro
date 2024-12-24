@@ -1,3 +1,11 @@
 #!/bin/bash
-git fetch
-git status
+LOCAL_HASH=$(git rev-parse HEAD)
+REMOTE_HASH=$(git rev-parse origin/master)
+
+#echo "Local hash: $LOCAL_HASH"
+#echo "Remote hash: $REMOTE_HASH"
+if [ "$LOCAL_HASH" == "$REMOTE_HASH" ];
+	then  echo "Данные сихронизованы"
+else 	git pull origin master #echo "Необходима синхронизация"
+fi
+
